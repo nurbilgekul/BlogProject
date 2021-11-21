@@ -1,0 +1,47 @@
+﻿@model List<GetCategoryVM>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <h4 class="box-title">List of Categories</h4>
+            </div>
+            <div class="box-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (GetCategoryVM category in Model)
+                        {
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@category.Id" class="btn btn-sm btn-warning">Update</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+                <a asp-action="Create" class="btn btn-block btn-dark">Create New Category</a>
+            </div>
+        </div>
+    </div>
+</div>
+
